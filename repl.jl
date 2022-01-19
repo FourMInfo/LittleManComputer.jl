@@ -53,3 +53,73 @@
 # 5:0     Accu: 9  // HLT
 # 1-element Vector{Int64}:
 #  9
+
+# test debug
+# julia> using LittleManComputer
+
+# julia> ENV["JULIA_DEBUG"] = "all"
+# "all"
+
+# julia> assemble("examples/count-down.lmc")
+# ┌ Debug: found labels
+# │   labels =
+# │    Dict{String, Int64} with 3 entries:
+# │      "count" => 8
+# │      "loop"  => 1
+# │      "one"   => 7
+# └ @ LittleManComputer ~/Code/FourM/Study/Julia/LittleManComputer.jl/src/assembler.jl:122
+# ┌ Debug: parsed line 1:
+# │   line = "        INP"
+# │   words = 1-element Vector{SubString{String}}: …
+# │   instruction = 901
+# └ @ LittleManComputer ~/Code/FourM/Study/Julia/LittleManComputer.jl/src/assembler.jl:137
+# ┌ Debug: parsed line 2:
+# │   line = "loop    OUT"
+# │   words = 2-element Vector{SubString{String}}: …
+# │   instruction = 902
+# └ @ LittleManComputer ~/Code/FourM/Study/Julia/LittleManComputer.jl/src/assembler.jl:137
+# ┌ Debug: parsed line 3:
+# │   line = "        STA count"
+# │   words = 2-element Vector{SubString{String}}: …
+# │   instruction = 308
+# └ @ LittleManComputer ~/Code/FourM/Study/Julia/LittleManComputer.jl/src/assembler.jl:137
+# ┌ Debug: parsed line 4:
+# │   line = "        SUB one"
+# │   words = 2-element Vector{SubString{String}}: …
+# │   instruction = 207
+# └ @ LittleManComputer ~/Code/FourM/Study/Julia/LittleManComputer.jl/src/assembler.jl:137
+# ┌ Debug: parsed line 5:
+# │   line = "        STA count"
+# │   words = 2-element Vector{SubString{String}}: …
+# │   instruction = 308
+# └ @ LittleManComputer ~/Code/FourM/Study/Julia/LittleManComputer.jl/src/assembler.jl:137
+# ┌ Debug: parsed line 6:
+# │   line = "        BRP loop"
+# │   words = 2-element Vector{SubString{String}}: …
+# │   instruction = 801
+# └ @ LittleManComputer ~/Code/FourM/Study/Julia/LittleManComputer.jl/src/assembler.jl:137
+# ┌ Debug: parsed line 7:
+# │   line = "        HLT"
+# │   words = 1-element Vector{SubString{String}}: …
+# │   instruction = 0
+# └ @ LittleManComputer ~/Code/FourM/Study/Julia/LittleManComputer.jl/src/assembler.jl:137
+# ┌ Debug: parsed line 8:
+# │   line = "one     DAT 1"
+# │   words = 3-element Vector{SubString{String}}: …
+# │   instruction = 1
+# └ @ LittleManComputer ~/Code/FourM/Study/Julia/LittleManComputer.jl/src/assembler.jl:137
+# ┌ Debug: parsed line 9:
+# │   line = "count   DAT "
+# │   words = 2-element Vector{SubString{String}}: …
+# │   instruction = 0
+# └ @ LittleManComputer ~/Code/FourM/Study/Julia/LittleManComputer.jl/src/assembler.jl:137
+# 9-element Vector{Int64}:
+#  901
+#  902
+#  308
+#  207
+#  308
+#  801
+#    0
+#    1
+#    0
