@@ -123,3 +123,42 @@
 #    0
 #    1
 #    0
+
+# Example writing log to file
+# julia> using LittleManComputer
+
+# julia> io = open("20220119lmc.log", "w+")
+# IOStream(<file 20220119lmc.log>)
+
+# julia> using Logging
+
+# julia> logger = SimpleLogger(io, Logging.Debug)
+# Base.CoreLogging.SimpleLogger(IOStream(<file 20220119lmc.log>), Debug, Dict{Any, Int64}())
+
+# julia> with_logger(logger) do
+#        assemble("examples/count-down.lmc")
+#        end
+# 9-element Vector{Int64}:
+#  901
+#  902
+#  308
+#  207
+#  308
+#  801
+#    0
+#    1
+#    0
+
+# julia> readlines("20220119lmc.log")
+# 144-element Vector{String}:
+#  "┌ Debug: found labels"
+#  "│   labels = Dict(\"count\" => 8, \"loop\" => 1, \"one\" => 7)"
+#  "└ @ LittleManComputer /Users/ar" ⋯ 38 bytes ⋯ "omputer.jl/src/assembler.jl:122"
+#  "┌ Debug: parsed line 1:"
+#  "│   line =         INP"
+#  ⋮
+#  "│   line = count   DAT "
+#  "│   words = SubString{String}[\"count\", \"DAT\"]"
+#  "│   instruction = 0"
+#  "└ @ LittleManComputer /Users/ar" ⋯ 38 bytes ⋯ "omputer.jl/src/assembler.jl:137"
+
