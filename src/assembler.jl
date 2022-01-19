@@ -75,7 +75,7 @@ function assemble_mnemonic(words::Vector{<:AbstractString}, labels=Dict{String, 
         in(word, keys(opcodes)) || word == "DAT"
     end
     
-    if i == nothing
+    if i === nothing
         for word in words
             if word ∉ keys(labels) 
                 throw(InvalidMnemonicError(word))
@@ -131,7 +131,7 @@ function assemble(filename::AbstractString)
         
         try
             instruction = assemble_mnemonic(words, labels)
-            if instruction == nothing
+            if instruction === nothing
                 continue
             else
                 @debug "parsed line $i:" line words instruction                
